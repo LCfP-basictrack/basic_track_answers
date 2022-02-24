@@ -11,8 +11,9 @@ landscape = np.array(im2)
 # create a new list for the new image
 for row in range(fruit.shape[0]):
     for column in range(fruit.shape[1]):
-        if fruit[row, column] > 230:
-            fruit[row, column] = landscape[row, column]
+        # if fruit[row, column] > 230:
+        #     fruit[row, column] = landscape[row, column]
+        fruit[row, column] = landscape[row, column] - fruit[row, column]
 
 # convert the new image to an array of 8 bit integers
 # uint8 => unsigned (no negative numbers) integers of 8 bits

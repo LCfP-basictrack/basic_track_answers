@@ -6,12 +6,13 @@ pix = np.array(im)
 
 # get the maximum value
 maximum = np.max(pix)
+minimum = np.min(pix)
 
 # calculate the scaling factor
-scale = 255.0 / maximum
+scale = 255.0 / (maximum - minimum)
 
 # create the new 2D array with list comprehension
-new_pix = [[pixel * scale for pixel in row] for row in pix]
+new_pix = [[(pixel - minimum) * scale for pixel in row] for row in pix]
 new_pix = np.array(new_pix).astype('uint8')
 
 im2 = Image.fromarray(new_pix)
